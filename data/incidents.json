@@ -1,0 +1,502 @@
+﻿[
+    {
+        "id":  "462d7505-54c2-4bf7-9c93-d0c91449a64c",
+        "title":  "Alkemi WETH Self-Liquidation Aliasing",
+        "incident_time":  "2026-03-10T12:50:47.000Z",
+        "usd_loss_label":  "$$89.1K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/462d7505-54c2-4bf7-9c93-d0c91449a64c/index.html"
+    },
+    {
+        "id":  "89d62bbc-53ce-4988-ad1a-e32628b3fa38",
+        "title":  "Alkemi Self-Liquidation Inflation",
+        "incident_time":  "2026-03-10T12:10:11.000Z",
+        "usd_loss_label":  "$$89.1K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/89d62bbc-53ce-4988-ad1a-e32628b3fa38/index.html"
+    },
+    {
+        "id":  "74780934-702f-4d9e-b8ad-ba4dbcdf4ce2",
+        "title":  "Aave CAPO Liquidation MEV",
+        "incident_time":  "2026-03-10T11:46:11.000Z",
+        "usd_loss_label":  "-",
+        "usd_loss_caption":  "No token loss",
+        "classification":  "NON_ATTACK_MEV",
+        "verified":  false,
+        "url":  "incidents/74780934-702f-4d9e-b8ad-ba4dbcdf4ce2/index.html"
+    },
+    {
+        "id":  "cce44f50-f790-4e35-aa83-c44add31f548",
+        "title":  "Movie Token Reserve-Burn Drain",
+        "incident_time":  "2026-03-10T00:05:23.000Z",
+        "usd_loss_label":  "$$242.6K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/cce44f50-f790-4e35-aa83-c44add31f548/index.html"
+    },
+    {
+        "id":  "16cbff15-9374-44fa-95ad-4a37604d4cf0",
+        "title":  "Gondi PurchaseBundler NFT Theft",
+        "incident_time":  "2026-03-09T08:12:11.000Z",
+        "usd_loss_label":  "Unknown",
+        "usd_loss_caption":  "USD unknown",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/16cbff15-9374-44fa-95ad-4a37604d4cf0/index.html"
+    },
+    {
+        "id":  "3595d22e-f16e-4132-8137-d5cce71343e4",
+        "title":  "LEDS Daily Burn Exploit",
+        "incident_time":  "2026-03-08T13:41:29.000Z",
+        "usd_loss_label":  "Unknown",
+        "usd_loss_caption":  "USD unknown",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/3595d22e-f16e-4132-8137-d5cce71343e4/index.html"
+    },
+    {
+        "id":  "8da2d52a-1190-4501-b073-09cfa9fe8468",
+        "title":  "MoltEVM Fake Spawner Drain",
+        "incident_time":  "2026-03-06T19:32:27.000Z",
+        "usd_loss_label":  "$$26.3K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/8da2d52a-1190-4501-b073-09cfa9fe8468/index.html"
+    },
+    {
+        "id":  "85f027f3-daca-40e0-91a3-985505c7cd4c",
+        "title":  "BRO-SOLV Callback Double-Mint Value Amplification",
+        "incident_time":  "2026-03-05T15:09:35.000Z",
+        "usd_loss_label":  "$$5.1M",
+        "usd_loss_caption":  "Partial estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/85f027f3-daca-40e0-91a3-985505c7cd4c/index.html"
+    },
+    {
+        "id":  "4d4e6449-d290-463d-9193-a6ff5d22aafd",
+        "title":  "Aerodrome V6 Unauthorized Reward Harvest via Forged Depositor Assignment",
+        "incident_time":  "2026-03-05T09:04:17.000Z",
+        "usd_loss_label":  "Unknown",
+        "usd_loss_caption":  "USD unknown",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/4d4e6449-d290-463d-9193-a6ff5d22aafd/index.html"
+    },
+    {
+        "id":  "52f19f90-1081-43c6-a740-8fa8c9e430e1",
+        "title":  "UniswapV4Router04 swap(bytes,uint256) Calldata-Offset Auth Bypass",
+        "incident_time":  "2026-03-03T06:17:11.000Z",
+        "usd_loss_label":  "$$42.6K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/52f19f90-1081-43c6-a740-8fa8c9e430e1/index.html"
+    },
+    {
+        "id":  "654e4e2b-4db9-41b2-8884-68c7344f1436",
+        "title":  "InugamiStaking Expired-Pool Debt Initialization Bypass (BSC)",
+        "incident_time":  "2026-03-03T05:30:10.000Z",
+        "usd_loss_label":  "$$8,864",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/654e4e2b-4db9-41b2-8884-68c7344f1436/index.html"
+    },
+    {
+        "id":  "83b7ea5f-25c6-442c-a8a5-ffd87414d823",
+        "title":  "ACP Router/PaymentManager Double-Claim Drain on Base",
+        "incident_time":  "2026-03-02T12:18:01.000Z",
+        "usd_loss_label":  "$$97K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/83b7ea5f-25c6-442c-a8a5-ffd87414d823/index.html"
+    },
+    {
+        "id":  "5d2142d1-815d-4a1f-94de-294c61bf18d5",
+        "title":  "Curve crvUSD sDOLA Market In-Tx Oracle Refresh Liquidation Attack",
+        "incident_time":  "2026-03-02T03:00:11.000Z",
+        "usd_loss_label":  "Unknown",
+        "usd_loss_caption":  "USD unknown",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/5d2142d1-815d-4a1f-94de-294c61bf18d5/index.html"
+    },
+    {
+        "id":  "9e6624a1-0f28-4239-ad21-c5cdbb8ce205",
+        "title":  "BUBU2 Permissionless LP-Balance Burn Trigger Exploit",
+        "incident_time":  "2026-03-01T00:49:13.000Z",
+        "usd_loss_label":  "$$19.8K",
+        "usd_loss_caption":  "Partial estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/9e6624a1-0f28-4239-ad21-c5cdbb8ce205/index.html"
+    },
+    {
+        "id":  "85b71075-88f3-42d3-a3dd-c9c333fe3429",
+        "title":  "BSC PoolWithdraw Signature-Bypass Drains USDT Pool",
+        "incident_time":  "2026-02-27T01:09:54.000Z",
+        "usd_loss_label":  "$$179.7K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/85b71075-88f3-42d3-a3dd-c9c333fe3429/index.html"
+    },
+    {
+        "id":  "eaf57e03-f2ee-4faa-a413-2a5958349ee4",
+        "title":  "FOOM Lottery verifier parameter collapse enables arbitrary collect drains",
+        "incident_time":  "2026-02-26T07:23:13.000Z",
+        "usd_loss_label":  "Unknown",
+        "usd_loss_caption":  "USD unknown",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/eaf57e03-f2ee-4faa-a413-2a5958349ee4/index.html"
+    },
+    {
+        "id":  "346d0ff6-7d9c-458e-aa7b-143c239c5416",
+        "title":  "Ploutos Market Oracle Feed Misconfiguration Enabled Undercollateralized WETH Borrow",
+        "incident_time":  "2026-02-26T05:07:59.000Z",
+        "usd_loss_label":  "$$388.1K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/346d0ff6-7d9c-458e-aa7b-143c239c5416/index.html"
+    },
+    {
+        "id":  "49f19f7a-10f8-486a-8df4-9f375267d38c",
+        "title":  "HedgePay Staking Proxy Repeated forceExit Withdrawal Drain",
+        "incident_time":  "2026-02-25T10:50:42.000Z",
+        "usd_loss_label":  "Unknown",
+        "usd_loss_caption":  "USD unknown",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/49f19f7a-10f8-486a-8df4-9f375267d38c/index.html"
+    },
+    {
+        "id":  "bd7f6e9a-e192-4e22-a508-c2d15e7fa00d",
+        "title":  "CPIMP Proxy Takeover",
+        "incident_time":  "2026-02-24T00:55:31.000Z",
+        "usd_loss_label":  "-",
+        "usd_loss_caption":  "No token loss",
+        "classification":  "ATTACK",
+        "verified":  false,
+        "url":  "incidents/bd7f6e9a-e192-4e22-a508-c2d15e7fa00d/index.html"
+    },
+    {
+        "id":  "b3bc18b0-b3f5-4589-9ad9-cac3ab53fc7f",
+        "title":  "STO Pending-Sell Burn Reserve Manipulation",
+        "incident_time":  "2026-02-23T11:39:14.000Z",
+        "usd_loss_label":  "$$16.1K",
+        "usd_loss_caption":  "Partial estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/b3bc18b0-b3f5-4589-9ad9-cac3ab53fc7f/index.html"
+    },
+    {
+        "id":  "63aad976-ce55-451a-9c84-b3d5b9b60eec",
+        "title":  "Tara Light Client Quorum-Check Ordering Bug Enables Forged Bridge Finalization and WETH Drain",
+        "incident_time":  "2026-02-22T17:01:11.000Z",
+        "usd_loss_label":  "$$2,225",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/63aad976-ce55-451a-9c84-b3d5b9b60eec/index.html"
+    },
+    {
+        "id":  "c109c7fe-4648-46b0-be93-d05cc3c1d19f",
+        "title":  "TaraClient finalizeBlocks Quorum-Bypass via In-Tx Validator Set Mutation",
+        "incident_time":  "2026-02-22T16:27:23.000Z",
+        "usd_loss_label":  "$$14.4K",
+        "usd_loss_caption":  "Partial estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/c109c7fe-4648-46b0-be93-d05cc3c1d19f/index.html"
+    },
+    {
+        "id":  "c9624631-9766-4e72-8898-5bed05537c88",
+        "title":  "Veil01ETH forged-proof drain on Base",
+        "incident_time":  "2026-02-20T18:09:41.000Z",
+        "usd_loss_label":  "$$5,698",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/c9624631-9766-4e72-8898-5bed05537c88/index.html"
+    },
+    {
+        "id":  "c27994a4-8cea-4cea-986a-fdf60162a19f",
+        "title":  "STOToken Sell-Hook Reserve Manipulation Drains the STO/WBNB Pancake Pair",
+        "incident_time":  "2026-02-20T04:29:56.000Z",
+        "usd_loss_label":  "$$71.6K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/c27994a4-8cea-4cea-986a-fdf60162a19f/index.html"
+    },
+    {
+        "id":  "a5d4bcfd-7f35-420b-8291-155fc1ca078e",
+        "title":  "PearlFi NLAMM unchecked multiplication overflow enables underpriced mint-and-drain",
+        "incident_time":  "2026-02-19T10:41:06.000Z",
+        "usd_loss_label":  "$$40.3K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/a5d4bcfd-7f35-420b-8291-155fc1ca078e/index.html"
+    },
+    {
+        "id":  "55b00f2a-160d-402c-9b78-912efebc32ec",
+        "title":  "XDK Sell-Hook Reserve Theft on PancakePair",
+        "incident_time":  "2026-02-16T12:51:23.000Z",
+        "usd_loss_label":  "$$4,285",
+        "usd_loss_caption":  "Partial estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/55b00f2a-160d-402c-9b78-912efebc32ec/index.html"
+    },
+    {
+        "id":  "42f81067-895e-4d18-9ada-4989a12cd0d7",
+        "title":  "SOF Sell-Hook Reserve Manipulation Drains PancakeSwap V2 USDT Liquidity",
+        "incident_time":  "2026-02-14T08:45:28.000Z",
+        "usd_loss_label":  "$$248.6K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/42f81067-895e-4d18-9ada-4989a12cd0d7/index.html"
+    },
+    {
+        "id":  "0c0d8788-371a-48d9-a44b-a91d1a830a81",
+        "title":  "OCAToken SwapHelper Recycle Drains PancakeSwap OCA/USDC Pair",
+        "incident_time":  "2026-02-13T17:48:29.000Z",
+        "usd_loss_label":  "$$422.6K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/0c0d8788-371a-48d9-a44b-a91d1a830a81/index.html"
+    },
+    {
+        "id":  "27cf3edb-7bd2-4998-a1cd-00b5582217a8",
+        "title":  "C87C Router tokenReceived Authentication Bypass Drains Victim-Approved USDT",
+        "incident_time":  "2026-02-13T17:05:59.000Z",
+        "usd_loss_label":  "$$13.9K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/27cf3edb-7bd2-4998-a1cd-00b5582217a8/index.html"
+    },
+    {
+        "id":  "ee37c22d-0a08-449f-975c-23c965f4474c",
+        "title":  "Loan Foreclosure Drains Pooled ETH Via Global Balance Distribution",
+        "incident_time":  "2026-02-12T13:58:23.000Z",
+        "usd_loss_label":  "$$10.4K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/ee37c22d-0a08-449f-975c-23c965f4474c/index.html"
+    },
+    {
+        "id":  "9b861e49-4234-4be3-9251-4e361a411adb",
+        "title":  "LiteV3 Bridge Aggregator Proxy Initialization Race Enabled Unauthorized UUPS Takeover",
+        "incident_time":  "2026-02-11T14:55:59.000Z",
+        "usd_loss_label":  "-",
+        "usd_loss_caption":  "No token loss",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/9b861e49-4234-4be3-9251-4e361a411adb/index.html"
+    },
+    {
+        "id":  "455b6713-03b6-46e7-8dd1-3dff32a5c7ab",
+        "title":  "AFX/AHT addLiquidityUsdt abuse drains treasury USDT liquidity",
+        "incident_time":  "2026-02-10T11:39:23.000Z",
+        "usd_loss_label":  "$$10.7K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/455b6713-03b6-46e7-8dd1-3dff32a5c7ab/index.html"
+    },
+    {
+        "id":  "a9b4f530-4f71-404c-841a-52b0c0117840",
+        "title":  "Balancer Callback Drain",
+        "incident_time":  "2026-02-07T01:02:18.000Z",
+        "usd_loss_label":  "$$1,190",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/a9b4f530-4f71-404c-841a-52b0c0117840/index.html"
+    },
+    {
+        "id":  "e31be544-5422-438a-95b8-120e950f0529",
+        "title":  "Morpho-Pendle flash-loan liquidation MEV captures undercollateralized spread",
+        "incident_time":  "2026-02-04T13:46:59.000Z",
+        "usd_loss_label":  "$$71.7K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "NON_ATTACK_MEV",
+        "verified":  true,
+        "url":  "incidents/e31be544-5422-438a-95b8-120e950f0529/index.html"
+    },
+    {
+        "id":  "7af6ff9e-e48b-479b-af72-8e05c31c83ec",
+        "title":  "PGNLZ Pre Burn Exploit on BSC PGNLZ",
+        "incident_time":  "2026-01-27T13:16:36.000Z",
+        "usd_loss_label":  "$$100.9K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/7af6ff9e-e48b-479b-af72-8e05c31c83ec/index.html"
+    },
+    {
+        "id":  "b7ad2c5c-ff2e-46ac-9434-64d9c81fe4bd",
+        "title":  "WBTC Drain via Insecure Router transferFrom Path",
+        "incident_time":  "2026-01-25T17:10:35.000Z",
+        "usd_loss_label":  "$$3.2M",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/b7ad2c5c-ff2e-46ac-9434-64d9c81fe4bd/index.html"
+    },
+    {
+        "id":  "47d01a31-4e49-4eca-b14f-5356a2c579d1",
+        "title":  "Treasury allowance-router abuse drains USDC/USDT/WBTC cross-chain",
+        "incident_time":  "2026-01-25T17:10:35.000Z",
+        "usd_loss_label":  "$$17M",
+        "usd_loss_caption":  "External total",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/47d01a31-4e49-4eca-b14f-5356a2c579d1/index.html"
+    },
+    {
+        "id":  "2bc9830b-0878-4f4d-b16e-f0705d1c4a03",
+        "title":  "MachineShare CurveStableSwapNG mispricing arbitrage extracts ETH-side liquidity",
+        "incident_time":  "2026-01-20T03:40:35.000Z",
+        "usd_loss_label":  "$$5.1M",
+        "usd_loss_caption":  "External total",
+        "classification":  "NON_ATTACK_MEV",
+        "verified":  true,
+        "url":  "incidents/2bc9830b-0878-4f4d-b16e-f0705d1c4a03/index.html"
+    },
+    {
+        "id":  "cd6c9abe-423d-4f27-8915-95e51834cce4",
+        "title":  "SynapLogicErc20 Router Flash-Loan Over-Mint Exploit",
+        "incident_time":  "2026-01-19T23:50:15.000Z",
+        "usd_loss_label":  "$$88.1K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/cd6c9abe-423d-4f27-8915-95e51834cce4/index.html"
+    },
+    {
+        "id":  "91ca46ae-ca67-4e6f-a0b1-f81bb57d6481",
+        "title":  "MetaverseToken fee misconfiguration drains USDT from Pancake pair",
+        "incident_time":  "2026-01-12T08:05:55.000Z",
+        "usd_loss_label":  "$$37K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/91ca46ae-ca67-4e6f-a0b1-f81bb57d6481/index.html"
+    },
+    {
+        "id":  "b269bf07-7ac6-42ea-acf3-fe547e3b5512",
+        "title":  "TRU reserve mispricing attack drains WBNB from pool",
+        "incident_time":  "2026-01-08T16:02:35.000Z",
+        "usd_loss_label":  "$$26.5M",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/b269bf07-7ac6-42ea-acf3-fe547e3b5512/index.html"
+    },
+    {
+        "id":  "32480f5f-bc94-4d60-b4f7-bbec82217194",
+        "title":  "OLY staking/router reward-abuse drains BEP20USDT from staking flows",
+        "incident_time":  "2026-01-04T21:46:47.000Z",
+        "usd_loss_label":  "$$179.6K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/32480f5f-bc94-4d60-b4f7-bbec82217194/index.html"
+    },
+    {
+        "id":  "fafcb348-6189-472c-99cb-fe8519ed4c4b",
+        "title":  "PRXVT Staking Transfer Accounting Flaw Drains Reward Pool",
+        "incident_time":  "2026-01-01T07:03:23.000Z",
+        "usd_loss_label":  "Unknown",
+        "usd_loss_caption":  "USD unknown",
+        "classification":  "NON_ATTACK_MEV",
+        "verified":  true,
+        "url":  "incidents/fafcb348-6189-472c-99cb-fe8519ed4c4b/index.html"
+    },
+    {
+        "id":  "b4dd1a80-37c1-4ec3-82d9-375a9f69bcaa",
+        "title":  "MorningStar releaseReward flaw drains MSC and yields WBNB profit",
+        "incident_time":  "2025-12-29T04:59:42.000Z",
+        "usd_loss_label":  "Unknown",
+        "usd_loss_caption":  "USD unknown",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/b4dd1a80-37c1-4ec3-82d9-375a9f69bcaa/index.html"
+    },
+    {
+        "id":  "b49354a1-d83e-4ed6-8db5-6c022cfc7407",
+        "title":  "DMi outfee misrouting collapses pair reserves under flash-loan sells",
+        "incident_time":  "2025-12-08T15:55:08.000Z",
+        "usd_loss_label":  "$$124.6K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  true,
+        "url":  "incidents/b49354a1-d83e-4ed6-8db5-6c022cfc7407/index.html"
+    },
+    {
+        "id":  "befdb680-06d7-40b0-a444-065faa82cb3b",
+        "title":  "Vault Spot-Price Execution Abuse",
+        "incident_time":  "2025-11-10T14:14:11.000Z",
+        "usd_loss_label":  "$$100K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  false,
+        "url":  "incidents/befdb680-06d7-40b0-a444-065faa82cb3b/index.html"
+    },
+    {
+        "id":  "68e1ed91-1b81-40f7-8d8f-1cfce4175896",
+        "title":  "Moonwell Base Oracle Inflation",
+        "incident_time":  "2025-11-04T05:45:11.000Z",
+        "usd_loss_label":  "$$88.5K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  false,
+        "url":  "incidents/68e1ed91-1b81-40f7-8d8f-1cfce4175896/index.html"
+    },
+    {
+        "id":  "df8f7ed5-5146-4362-973d-dd146082afa3",
+        "title":  "Balancer BatchSwap Mispricing",
+        "incident_time":  "2025-11-03T07:46:47.000Z",
+        "usd_loss_label":  "$$128.6M",
+        "usd_loss_caption":  "External total",
+        "classification":  "ATTACK",
+        "verified":  false,
+        "url":  "incidents/df8f7ed5-5146-4362-973d-dd146082afa3/index.html"
+    },
+    {
+        "id":  "9859bdd9-6b46-4cf6-9355-c420da044322",
+        "title":  "Sharwa Ephemeral Collateral Exploit",
+        "incident_time":  "2025-10-20T04:32:27.000Z",
+        "usd_loss_label":  "$$37.9K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  false,
+        "url":  "incidents/9859bdd9-6b46-4cf6-9355-c420da044322/index.html"
+    },
+    {
+        "id":  "ccf28e78-87e7-476a-9325-0f728270ec90",
+        "title":  "Lavarage Arbitrary Router Drain",
+        "incident_time":  "2025-10-08T02:50:03.000Z",
+        "usd_loss_label":  "$$25.7K",
+        "usd_loss_caption":  "Confident estimate",
+        "classification":  "ATTACK",
+        "verified":  false,
+        "url":  "incidents/ccf28e78-87e7-476a-9325-0f728270ec90/index.html"
+    }
+]
