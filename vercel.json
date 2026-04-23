@@ -1,0 +1,62 @@
+{
+  "cleanUrls": false,
+  "trailingSlash": true,
+  "headers": [
+    {
+      "source": "/_next/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/pricing",
+      "destination": "/pricing/index.html"
+    },
+    {
+      "source": "/research",
+      "destination": "/research/index.html"
+    },
+    {
+      "source": "/subscribe",
+      "destination": "/subscribe/index.html"
+    },
+    {
+      "source": "/unlock",
+      "destination": "/unlock/index.html"
+    },
+    {
+      "source": "/license",
+      "destination": "/license/index.html"
+    },
+    {
+      "source": "/incidents/:id",
+      "destination": "/incidents/:id/index.html"
+    },
+    {
+      "source": "/api/auth/signin/twitter",
+      "destination": "/api/auth/signin/twitter/index.html"
+    },
+    {
+      "source": "/api/stripe/checkout",
+      "destination": "/api/stripe/checkout/index.html"
+    },
+    {
+      "source": "/api/stripe/portal",
+      "destination": "/api/stripe/portal/index.html"
+    }
+  ]
+}

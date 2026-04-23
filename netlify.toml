@@ -1,0 +1,57 @@
+[build]
+publish = "."
+
+[[headers]]
+for = "/_next/static/*"
+  [headers.values]
+  Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/*.html"
+  [headers.values]
+  Cache-Control = "public, max-age=300"
+
+[[redirects]]
+from = "/pricing"
+to = "/pricing/index.html"
+status = 200
+
+[[redirects]]
+from = "/research"
+to = "/research/index.html"
+status = 200
+
+[[redirects]]
+from = "/subscribe"
+to = "/subscribe/index.html"
+status = 200
+
+[[redirects]]
+from = "/unlock"
+to = "/unlock/index.html"
+status = 200
+
+[[redirects]]
+from = "/license"
+to = "/license/index.html"
+status = 200
+
+[[redirects]]
+from = "/incidents/:id"
+to = "/incidents/:id/index.html"
+status = 200
+
+[[redirects]]
+from = "/api/auth/signin/twitter"
+to = "/api/auth/signin/twitter/index.html"
+status = 200
+
+[[redirects]]
+from = "/api/stripe/checkout"
+to = "/api/stripe/checkout/index.html"
+status = 200
+
+[[redirects]]
+from = "/api/stripe/portal"
+to = "/api/stripe/portal/index.html"
+status = 200
