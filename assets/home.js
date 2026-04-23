@@ -7,8 +7,8 @@
       navPricing: "定价",
       navResearch: "研究",
       navLicense: "授权",
-      heroTitle: "每一笔攻击，都需要被看见并被解释。",
-      heroDesc: "面向安全团队与项目方的事故情报首页。你可以直接搜索事件、按类型筛选，并快速进入完整报告页。",
+      heroTitle: "每一次攻击，都会改变你的风险敞口。",
+      heroDesc: "基于已收录事件构建情报首页，支持检索、筛选、报告浏览与可视化统计。",
       statTotal: "已收录事件",
       statAttack: "攻击事件",
       statMev: "MEV 事件",
@@ -26,14 +26,22 @@
       next: "下一页",
       foot: "最近更新时间：",
       footTail: " · 数据来自当前静态归档",
-      langBtn: "中文 / EN"
+      langBtn: "中文 / EN",
+      bubbleTitle: "实时事件气泡统计",
+      bubbleSubtitle: "依据收录攻击事件按时间与损失规模可视化分布",
+      bubbleLegendAttack: "攻击",
+      bubbleLegendMev: "MEV",
+      bubbleFootLeft: "数据点：",
+      bubbleFootRight: "单位：USD 估算",
+      bubbleAxisRecent: "最近",
+      bubbleAxisPast: "较早"
     },
     en: {
       navPricing: "Pricing",
       navResearch: "Research",
       navLicense: "License",
-      heroTitle: "Every exploit should be seen and explained.",
-      heroDesc: "An incident intelligence dashboard for security teams. Search, filter, and open full reports in one click.",
+      heroTitle: "Every exploit changes your risk surface.",
+      heroDesc: "Incident intelligence homepage with search, filters, report view and bubble analytics.",
       statTotal: "Total Incidents",
       statAttack: "Attack",
       statMev: "MEV",
@@ -51,7 +59,15 @@
       next: "Next",
       foot: "Last updated: ",
       footTail: " · source: static archive",
-      langBtn: "EN / 中文"
+      langBtn: "EN / 中文",
+      bubbleTitle: "Realtime Bubble Statistics",
+      bubbleSubtitle: "Visualizing incident distribution by time and estimated loss",
+      bubbleLegendAttack: "Attack",
+      bubbleLegendMev: "MEV",
+      bubbleFootLeft: "Points: ",
+      bubbleFootRight: "Unit: USD estimate",
+      bubbleAxisRecent: "Recent",
+      bubbleAxisPast: "Past"
     }
   };
 
@@ -62,6 +78,14 @@
     type: "all",
     page: 1,
     pageSize: 12
+  };
+
+  var chart = {
+    canvas: null,
+    ctx: null,
+    points: [],
+    raf: 0,
+    frame: 0
   };
 
   var refs = {
@@ -78,7 +102,13 @@
     langBtn: document.getElementById("lang-toggle"),
     navPricing: document.getElementById("nav-pricing"),
     navResearch: document.getElementById("nav-research"),
-    navLicense: document.getElementById("nav-license")
+    navLicense: document.getElementById("nav-license"),
+    bubbleTitle: document.getElementById("bubble-title"),
+    bubbleSubtitle: document.getElementById("bubble-subtitle"),
+    legendAttack: document.getElementById("legend-attack"),
+    legendMev: document.getElementById("legend-mev"),
+    bubbleFootLeft: document.getElementById("chart-foot-left"),
+    bubbleFootRight: document.getElementById("chart-foot-right")
   };
 
   function t(key) {
@@ -88,6 +118,19 @@
   function normalizeUsd(v) {
     if (!v) return "Unknown";
     return String(v).replace("$$", "$");
+  }
+
+  function parseUsdToNumber(label) {
+    if (!label) return 0;
+    var s = String(label).replace(/\$/g, "").replace(/,/g, "").trim().toUpperCase();
+    if (s === "-" || s === "UNKNOWN" || s === "N/A") return 0;
+    var mult = 1;
+    if (s.endsWith("K")) { mult = 1000; s = s.slice(0, -1); }
+    else if (s.endsWith("M")) { mult = 1000000; s = s.slice(0, -1); }
+    else if (s.endsWith("B")) { mult = 1000000000; s = s.slice(0, -1); }
+    var n = parseFloat(s);
+    if (Number.isNaN(n)) return 0;
+    return n * mult;
   }
 
   function formatTime(iso) {
@@ -120,6 +163,11 @@
     refs.prevBtn.textContent = t("prev");
     refs.nextBtn.textContent = t("next");
     refs.langBtn.textContent = t("langBtn");
+    refs.bubbleTitle.textContent = t("bubbleTitle");
+    refs.bubbleSubtitle.textContent = t("bubbleSubtitle");
+    refs.legendAttack.textContent = t("bubbleLegendAttack");
+    refs.legendMev.textContent = t("bubbleLegendMev");
+    refs.bubbleFootRight.textContent = t("bubbleFootRight");
   }
 
   function applyFilter() {
@@ -147,11 +195,12 @@
     refs.attacks.textContent = String(attacks);
     refs.mev.textContent = String(mev);
     refs.updated.textContent = latest;
+    refs.bubbleFootLeft.textContent = t("bubbleFootLeft") + total;
     document.querySelector(".foot").innerHTML = t("foot") + '<span id="last-updated">' + latest + "</span>" + t("footTail");
     refs.updated = document.getElementById("last-updated");
   }
 
-  function render() {
+  function renderList() {
     var total = state.filtered.length;
     var start = (state.page - 1) * state.pageSize;
     var pageItems = state.filtered.slice(start, start + state.pageSize);
@@ -185,6 +234,117 @@
     refs.pagerInfo.textContent = total === 0 ? "0 / 0" : (start + 1) + "-" + end + " / " + total;
     refs.prevBtn.disabled = state.page <= 1;
     refs.nextBtn.disabled = end >= total;
+  }
+
+  function seededNoise(id) {
+    var h = 0;
+    for (var i = 0; i < id.length; i += 1) h = (h * 33 + id.charCodeAt(i)) >>> 0;
+    return (h % 1000) / 1000;
+  }
+
+  function buildChartPoints() {
+    var minTs = Infinity;
+    var maxTs = -Infinity;
+    state.incidents.forEach(function (x) {
+      var ts = new Date(x.incident_time).getTime();
+      if (!Number.isNaN(ts)) {
+        if (ts < minTs) minTs = ts;
+        if (ts > maxTs) maxTs = ts;
+      }
+    });
+    if (!Number.isFinite(minTs) || !Number.isFinite(maxTs) || minTs === maxTs) {
+      minTs = Date.now() - 86400000;
+      maxTs = Date.now();
+    }
+
+    chart.points = state.incidents.map(function (item, idx) {
+      var ts = new Date(item.incident_time).getTime();
+      if (Number.isNaN(ts)) ts = minTs;
+      var loss = parseUsdToNumber(item.usd_loss_label);
+      var amount = Math.max(0, loss);
+      var size = 4 + Math.min(28, Math.log10(amount + 10) * 4.3);
+      var n = seededNoise(item.id);
+      return {
+        id: item.id,
+        title: item.title,
+        ts: ts,
+        t: (ts - minTs) / (maxTs - minTs),
+        y: 0.15 + n * 0.75,
+        r: size,
+        type: item.classification,
+        phase: idx * 0.37 + n * 4
+      };
+    });
+  }
+
+  function resizeCanvas() {
+    if (!chart.canvas) return;
+    var rect = chart.canvas.getBoundingClientRect();
+    var dpr = Math.max(1, window.devicePixelRatio || 1);
+    chart.canvas.width = Math.floor(rect.width * dpr);
+    chart.canvas.height = Math.floor(rect.height * dpr);
+    chart.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function drawChart() {
+    if (!chart.ctx || !chart.canvas) return;
+    chart.frame += 1;
+    var ctx = chart.ctx;
+    var w = chart.canvas.clientWidth;
+    var h = chart.canvas.clientHeight;
+
+    ctx.clearRect(0, 0, w, h);
+
+    var pad = { l: 30, r: 18, t: 16, b: 28 };
+    var ww = w - pad.l - pad.r;
+    var hh = h - pad.t - pad.b;
+
+    ctx.strokeStyle = "#e4ebf6";
+    ctx.lineWidth = 1;
+    for (var gy = 0; gy <= 4; gy += 1) {
+      var yy = pad.t + (hh / 4) * gy;
+      ctx.beginPath();
+      ctx.moveTo(pad.l, yy);
+      ctx.lineTo(w - pad.r, yy);
+      ctx.stroke();
+    }
+
+    ctx.fillStyle = "#74839b";
+    ctx.font = "12px Segoe UI, sans-serif";
+    ctx.fillText(t("bubbleAxisPast"), pad.l, h - 8);
+    var recentWidth = ctx.measureText(t("bubbleAxisRecent")).width;
+    ctx.fillText(t("bubbleAxisRecent"), w - pad.r - recentWidth, h - 8);
+
+    chart.points.forEach(function (p) {
+      var x = pad.l + p.t * ww;
+      var drift = Math.sin(chart.frame * 0.025 + p.phase) * 5;
+      var y = pad.t + (1 - p.y) * hh + drift;
+      var color = p.type === "ATTACK" ? "rgba(231, 96, 96, 0.35)" : "rgba(70, 153, 233, 0.35)";
+      var stroke = p.type === "ATTACK" ? "rgba(215, 77, 77, 0.8)" : "rgba(53, 133, 214, 0.85)";
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.strokeStyle = stroke;
+      ctx.lineWidth = 1;
+      ctx.arc(x, y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+    });
+
+    chart.raf = requestAnimationFrame(drawChart);
+  }
+
+  function initChart() {
+    chart.canvas = document.getElementById("bubble-canvas");
+    if (!chart.canvas) return;
+    chart.ctx = chart.canvas.getContext("2d");
+    resizeCanvas();
+    buildChartPoints();
+    if (chart.raf) cancelAnimationFrame(chart.raf);
+    drawChart();
+  }
+
+  function render() {
+    renderList();
   }
 
   function bindEvents() {
@@ -223,6 +383,10 @@
       renderStats();
       render();
     });
+
+    window.addEventListener("resize", function () {
+      resizeCanvas();
+    });
   }
 
   function loadData() {
@@ -235,6 +399,7 @@
         state.incidents = Array.isArray(data) ? data : [];
         renderStats();
         applyFilter();
+        initChart();
       })
       .catch(function (err) {
         refs.list.innerHTML = '<div class="empty">Data error: ' + err.message + "</div>";

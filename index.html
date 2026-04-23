@@ -36,10 +36,8 @@
     <section class="hero">
       <div class="hero-grid">
         <div>
-          <h1>每一笔攻击，都需要被看见并被解释。</h1>
-          <p>
-            面向安全团队与项目方的事故情报首页。你可以直接搜索事件、按类型筛选，并快速进入完整报告页。
-          </p>
+          <h1>每一次攻击，都会改变你的风险敞口。</h1>
+          <p>基于已收录事件构建情报首页，支持检索、筛选、报告浏览与可视化统计。</p>
         </div>
         <div class="stats">
           <div class="stat">
@@ -55,6 +53,26 @@
             <div class="value" id="stat-mev">-</div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="chart-panel" aria-labelledby="bubble-title">
+      <div class="chart-head">
+        <div>
+          <h2 id="bubble-title" class="chart-title">实时事件气泡统计</h2>
+          <p id="bubble-subtitle" class="chart-subtitle">依据收录攻击事件按时间与损失规模可视化分布</p>
+        </div>
+        <div class="chart-legend">
+          <span><i class="dot dot-attack"></i><b id="legend-attack">攻击</b></span>
+          <span><i class="dot dot-mev"></i><b id="legend-mev">MEV</b></span>
+        </div>
+      </div>
+      <div class="chart-canvas-wrap">
+        <canvas id="bubble-canvas" width="1080" height="360" aria-label="bubble chart"></canvas>
+      </div>
+      <div class="chart-foot">
+        <span id="chart-foot-left">数据点：-</span>
+        <span id="chart-foot-right">单位：USD 估算</span>
       </div>
     </section>
 
@@ -79,9 +97,7 @@
       </div>
     </section>
 
-    <p class="foot">
-      最近更新时间：<span id="last-updated">-</span> · 数据来自当前静态归档
-    </p>
+    <p class="foot">最近更新时间：<span id="last-updated">-</span> · 数据来自当前静态归档</p>
   </main>
 
   <script src="assets/i18n.js"></script>
