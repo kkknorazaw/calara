@@ -46,6 +46,7 @@ a {
   align-items: center;
   justify-content: space-between;
   height: 62px;
+  gap: 10px;
 }
 
 .brand {
@@ -70,6 +71,24 @@ a {
   gap: 14px;
   color: var(--muted);
   font-size: 14px;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lang-btn {
+  height: 34px;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #27324b;
+  cursor: pointer;
 }
 
 .hero {
@@ -307,5 +326,11 @@ a {
   .toolbar {
     grid-template-columns: 1fr auto;
     align-items: center;
+  }
+}
+
+@media (max-width: 680px) {
+  .nav {
+    display: none;
   }
 }

@@ -1,5 +1,61 @@
 (function () {
-  const state = {
+  var I18N = window.CalaraI18n;
+  var lang = I18N ? I18N.initDefault() : "zh";
+
+  var TEXT = {
+    zh: {
+      navPricing: "定价",
+      navResearch: "研究",
+      navLicense: "授权",
+      heroTitle: "每一笔攻击，都需要被看见并被解释。",
+      heroDesc: "面向安全团队与项目方的事故情报首页。你可以直接搜索事件、按类型筛选，并快速进入完整报告页。",
+      statTotal: "已收录事件",
+      statAttack: "攻击事件",
+      statMev: "MEV 事件",
+      search: "搜索标题、ID、损失金额...",
+      tabAll: "全部",
+      tabAttack: "攻击",
+      tabMev: "MEV",
+      view: "查看报告",
+      verified: "已验证",
+      pending: "待确认",
+      attackTag: "攻击事件",
+      mevTag: "MEV",
+      noResult: "没有匹配结果，请尝试其他关键词。",
+      prev: "上一页",
+      next: "下一页",
+      foot: "最近更新时间：",
+      footTail: " · 数据来自当前静态归档",
+      langBtn: "中文 / EN"
+    },
+    en: {
+      navPricing: "Pricing",
+      navResearch: "Research",
+      navLicense: "License",
+      heroTitle: "Every exploit should be seen and explained.",
+      heroDesc: "An incident intelligence dashboard for security teams. Search, filter, and open full reports in one click.",
+      statTotal: "Total Incidents",
+      statAttack: "Attack",
+      statMev: "MEV",
+      search: "Search title, id, loss...",
+      tabAll: "All",
+      tabAttack: "Attack",
+      tabMev: "MEV",
+      view: "View Report",
+      verified: "Verified",
+      pending: "Pending",
+      attackTag: "Attack",
+      mevTag: "MEV",
+      noResult: "No matching results.",
+      prev: "Prev",
+      next: "Next",
+      foot: "Last updated: ",
+      footTail: " · source: static archive",
+      langBtn: "EN / 中文"
+    }
+  };
+
+  var state = {
     incidents: [],
     filtered: [],
     query: "",
@@ -8,7 +64,7 @@
     pageSize: 12
   };
 
-  const refs = {
+  var refs = {
     total: document.getElementById("stat-total"),
     attacks: document.getElementById("stat-attack"),
     mev: document.getElementById("stat-mev"),
@@ -18,19 +74,27 @@
     pagerInfo: document.getElementById("pager-info"),
     prevBtn: document.getElementById("prev-page"),
     nextBtn: document.getElementById("next-page"),
-    tabs: Array.from(document.querySelectorAll(".tab"))
+    tabs: Array.prototype.slice.call(document.querySelectorAll(".tab")),
+    langBtn: document.getElementById("lang-toggle"),
+    navPricing: document.getElementById("nav-pricing"),
+    navResearch: document.getElementById("nav-research"),
+    navLicense: document.getElementById("nav-license")
   };
+
+  function t(key) {
+    return (TEXT[lang] && TEXT[lang][key]) || key;
+  }
 
   function normalizeUsd(v) {
     if (!v) return "Unknown";
-    return v.replace("$$", "$");
+    return String(v).replace("$$", "$");
   }
 
   function formatTime(iso) {
     if (!iso) return "Unknown";
-    const d = new Date(iso);
+    var d = new Date(iso);
     if (Number.isNaN(d.getTime())) return iso;
-    return new Intl.DateTimeFormat("zh-CN", {
+    return new Intl.DateTimeFormat(lang === "zh" ? "zh-CN" : "en-US", {
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
@@ -40,16 +104,34 @@
     }).format(d);
   }
 
+  function paintStaticText() {
+    refs.navPricing.textContent = t("navPricing");
+    refs.navResearch.textContent = t("navResearch");
+    refs.navLicense.textContent = t("navLicense");
+    document.querySelector(".hero h1").textContent = t("heroTitle");
+    document.querySelector(".hero p").textContent = t("heroDesc");
+    document.querySelectorAll(".stat .label")[0].textContent = t("statTotal");
+    document.querySelectorAll(".stat .label")[1].textContent = t("statAttack");
+    document.querySelectorAll(".stat .label")[2].textContent = t("statMev");
+    refs.query.placeholder = t("search");
+    refs.tabs[0].textContent = t("tabAll");
+    refs.tabs[1].textContent = t("tabAttack");
+    refs.tabs[2].textContent = t("tabMev");
+    refs.prevBtn.textContent = t("prev");
+    refs.nextBtn.textContent = t("next");
+    refs.langBtn.textContent = t("langBtn");
+  }
+
   function applyFilter() {
-    const q = state.query.trim().toLowerCase();
-    state.filtered = state.incidents.filter((item) => {
-      const typePass = state.type === "all" || item.classification === state.type;
+    var q = state.query.trim().toLowerCase();
+    state.filtered = state.incidents.filter(function (item) {
+      var typePass = state.type === "all" || item.classification === state.type;
       if (!typePass) return false;
       if (!q) return true;
       return (
-        item.title.toLowerCase().includes(q) ||
-        item.id.toLowerCase().includes(q) ||
-        normalizeUsd(item.usd_loss_label).toLowerCase().includes(q)
+        item.title.toLowerCase().indexOf(q) >= 0 ||
+        item.id.toLowerCase().indexOf(q) >= 0 ||
+        normalizeUsd(item.usd_loss_label).toLowerCase().indexOf(q) >= 0
       );
     });
     state.page = 1;
@@ -57,110 +139,109 @@
   }
 
   function renderStats() {
-    const total = state.incidents.length;
-    const attacks = state.incidents.filter((x) => x.classification === "ATTACK").length;
-    const mev = state.incidents.filter((x) => x.classification === "NON_ATTACK_MEV").length;
-    const latest = state.incidents[0] ? formatTime(state.incidents[0].incident_time) : "-";
+    var total = state.incidents.length;
+    var attacks = state.incidents.filter(function (x) { return x.classification === "ATTACK"; }).length;
+    var mev = state.incidents.filter(function (x) { return x.classification === "NON_ATTACK_MEV"; }).length;
+    var latest = state.incidents[0] ? formatTime(state.incidents[0].incident_time) : "-";
     refs.total.textContent = String(total);
     refs.attacks.textContent = String(attacks);
     refs.mev.textContent = String(mev);
     refs.updated.textContent = latest;
-  }
-
-  function typeTag(item) {
-    if (item.classification === "ATTACK") {
-      return '<span class="pill attack">攻击事件</span>';
-    }
-    return '<span class="pill mev">MEV</span>';
-  }
-
-  function verifyTag(item) {
-    return item.verified
-      ? '<span class="pill ok">已验证</span>'
-      : '<span class="pill warn">待确认</span>';
+    document.querySelector(".foot").innerHTML = t("foot") + '<span id="last-updated">' + latest + "</span>" + t("footTail");
+    refs.updated = document.getElementById("last-updated");
   }
 
   function render() {
-    const total = state.filtered.length;
-    const start = (state.page - 1) * state.pageSize;
-    const pageItems = state.filtered.slice(start, start + state.pageSize);
-    const end = Math.min(start + state.pageSize, total);
+    var total = state.filtered.length;
+    var start = (state.page - 1) * state.pageSize;
+    var pageItems = state.filtered.slice(start, start + state.pageSize);
+    var end = Math.min(start + state.pageSize, total);
 
     if (pageItems.length === 0) {
-      refs.list.innerHTML = '<div class="empty">没有匹配结果，请尝试其他关键词。</div>';
+      refs.list.innerHTML = '<div class="empty">' + t("noResult") + "</div>";
     } else {
       refs.list.innerHTML = pageItems
-        .map((item) => {
-          const usd = normalizeUsd(item.usd_loss_label);
-          const caption = item.usd_loss_caption || "暂无说明";
-          return `
-          <article class="item">
-            <div class="item-title">${item.title}</div>
-            <div class="meta">
-              ${typeTag(item)}
-              ${verifyTag(item)}
-              <span>${formatTime(item.incident_time)}</span>
-              <span>ID: ${item.id.slice(0, 8)}...</span>
-            </div>
-            <div class="row">
-              <div>
-                <div class="usd">${usd}</div>
-                <div class="meta">${caption}</div>
-              </div>
-              <a href="${item.url}" class="btn">查看报告</a>
-            </div>
-          </article>`;
+        .map(function (item) {
+          var usd = normalizeUsd(item.usd_loss_label);
+          var caption = item.usd_loss_caption || "N/A";
+          var typeHtml = item.classification === "ATTACK"
+            ? '<span class="pill attack">' + t("attackTag") + "</span>"
+            : '<span class="pill mev">' + t("mevTag") + "</span>";
+          var verifyHtml = item.verified
+            ? '<span class="pill ok">' + t("verified") + "</span>"
+            : '<span class="pill warn">' + t("pending") + "</span>";
+          return (
+            '<article class="item">' +
+            '<div class="item-title">' + item.title + "</div>" +
+            '<div class="meta">' + typeHtml + verifyHtml + "<span>" + formatTime(item.incident_time) + "</span><span>ID: " + item.id.slice(0, 8) + "...</span></div>" +
+            '<div class="row"><div><div class="usd">' + usd + "</div><div class=\"meta\">" + caption + "</div></div>" +
+            '<a href="report.html?id=' + encodeURIComponent(item.id) + '" class="btn">' + t("view") + "</a></div>" +
+            "</article>"
+          );
         })
         .join("");
     }
 
-    refs.pagerInfo.textContent = total === 0 ? "0 / 0" : `${start + 1}-${end} / ${total}`;
+    refs.pagerInfo.textContent = total === 0 ? "0 / 0" : (start + 1) + "-" + end + " / " + total;
     refs.prevBtn.disabled = state.page <= 1;
     refs.nextBtn.disabled = end >= total;
   }
 
-  async function loadData() {
-    const res = await fetch("data/incidents.json", { cache: "no-store" });
-    if (!res.ok) throw new Error("failed to load incidents.json");
-    const data = await res.json();
-    state.incidents = Array.isArray(data) ? data : [];
-    renderStats();
-    applyFilter();
-  }
-
   function bindEvents() {
-    refs.query.addEventListener("input", (e) => {
+    refs.query.addEventListener("input", function (e) {
       state.query = e.target.value;
       applyFilter();
     });
 
-    refs.tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        refs.tabs.forEach((x) => x.classList.remove("active"));
+    refs.tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        refs.tabs.forEach(function (x) { x.classList.remove("active"); });
         tab.classList.add("active");
-        state.type = tab.dataset.type;
+        state.type = tab.getAttribute("data-type");
         applyFilter();
       });
     });
 
-    refs.prevBtn.addEventListener("click", () => {
+    refs.prevBtn.addEventListener("click", function () {
       if (state.page <= 1) return;
       state.page -= 1;
       render();
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    refs.nextBtn.addEventListener("click", () => {
-      const maxPage = Math.ceil(state.filtered.length / state.pageSize);
+    refs.nextBtn.addEventListener("click", function () {
+      var maxPage = Math.ceil(state.filtered.length / state.pageSize);
       if (state.page >= maxPage) return;
       state.page += 1;
       render();
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
+
+    refs.langBtn.addEventListener("click", function () {
+      lang = I18N && I18N.setLang(lang === "zh" ? "en" : "zh");
+      paintStaticText();
+      renderStats();
+      render();
+    });
   }
 
+  function loadData() {
+    return fetch("data/incidents.json", { cache: "no-store" })
+      .then(function (res) {
+        if (!res.ok) throw new Error("failed to load incidents");
+        return res.json();
+      })
+      .then(function (data) {
+        state.incidents = Array.isArray(data) ? data : [];
+        renderStats();
+        applyFilter();
+      })
+      .catch(function (err) {
+        refs.list.innerHTML = '<div class="empty">Data error: ' + err.message + "</div>";
+      });
+  }
+
+  paintStaticText();
   bindEvents();
-  loadData().catch((err) => {
-    refs.list.innerHTML = `<div class="empty">首页数据加载失败：${err.message}</div>`;
-  });
+  loadData();
 })();
