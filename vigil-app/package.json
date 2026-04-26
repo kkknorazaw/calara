@@ -1,0 +1,37 @@
+{
+  "name": "vigil-app",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "webpack serve --mode development",
+    "build": "tsc --noEmit && webpack --mode production",
+    "lint": "eslint . --ext ts,tsx --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "preview": "webpack serve --mode production"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "copy-webpack-plugin": "^12.0.2",
+    "css-loader": "^7.1.2",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "html-webpack-plugin": "^5.6.3",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.7.2",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.2.2"
+  }
+}
