@@ -1,0 +1,82 @@
+[
+  {
+    "id": "462d7505-54c2-4bf7-9c93-d0c91449a64c",
+    "title": "Alkemi WETH Self-Liquidation Aliasing",
+    "incident_time": "2026-03-10T12:50:47.000Z",
+    "usd_loss_label": "$$89.1K",
+    "usd_loss_caption": "Confident estimate",
+    "classification": "ATTACK",
+    "verified": true,
+    "url": "incidents/462d7505-54c2-4bf7-9c93-d0c91449a64c/index.html"
+  },
+  {
+    "id": "89d62bbc-53ce-4988-ad1a-e32628b3fa38",
+    "title": "Alkemi Self-Liquidation Inflation",
+    "incident_time": "2026-03-10T12:10:11.000Z",
+    "usd_loss_label": "$$89.1K",
+    "usd_loss_caption": "Confident estimate",
+    "classification": "ATTACK",
+    "verified": true,
+    "url": "incidents/89d62bbc-53ce-4988-ad1a-e32628b3fa38/index.html"
+  },
+  {
+    "id": "74780934-702f-4d9e-b8ad-ba4dbcdf4ce2",
+    "title": "Aave CAPO Liquidation MEV",
+    "incident_time": "2026-03-10T11:46:11.000Z",
+    "usd_loss_label": "-",
+    "usd_loss_caption": "No token loss",
+    "classification": "NON_ATTACK_MEV",
+    "verified": false,
+    "url": "incidents/74780934-702f-4d9e-b8ad-ba4dbcdf4ce2/index.html"
+  },
+  {
+    "id": "cce44f50-f790-4e35-aa83-c44add31f548",
+    "title": "Movie Token Reserve-Burn Drain",
+    "incident_time": "2026-03-10T00:05:23.000Z",
+    "usd_loss_label": "$$242.6K",
+    "usd_loss_caption": "Confident estimate",
+    "classification": "ATTACK",
+    "verified": true,
+    "url": "incidents/cce44f50-f790-4e35-aa83-c44add31f548/index.html"
+  },
+  {
+    "id": "16cbff15-9374-44fa-95ad-4a37604d4cf0",
+    "title": "Gondi PurchaseBundler NFT Theft",
+    "incident_time": "2026-03-09T08:12:11.000Z",
+    "usd_loss_label": "Unknown",
+    "usd_loss_caption": "USD unknown",
+    "classification": "ATTACK",
+    "verified": true,
+    "url": "incidents/16cbff15-9374-44fa-95ad-4a37604d4cf0/index.html"
+  },
+  {
+    "id": "3595d22e-f16e-4132-8137-d5cce71343e4",
+    "title": "LEDS Daily Burn Exploit",
+    "incident_time": "2026-03-08T13:41:29.000Z",
+    "usd_loss_label": "Unknown",
+    "usd_loss_caption": "USD unknown",
+    "classification": "ATTACK",
+    "verified": true,
+    "url": "incidents/3595d22e-f16e-4132-8137-d5cce71343e4/index.html"
+  },
+  {
+    "id": "8da2d52a-1190-4501-b073-09cfa9fe8468",
+    "title": "MoltEVM Fake Spawner Drain",
+    "incident_time": "2026-03-06T19:32:27.000Z",
+    "usd_loss_label": "$$26.3K",
+    "usd_loss_caption": "Confident estimate",
+    "classification": "ATTACK",
+    "verified": true,
+    "url": "incidents/8da2d52a-1190-4501-b073-09cfa9fe8468/index.html"
+  },
+  {
+    "id": "85f027f3-daca-40e0-91a3-985505c7cd4c",
+    "title": "BRO-SOLV Callback Double-Mint Value Amplification",
+    "incident_time": "2026-03-05T15:09:35.000Z",
+    "usd_loss_label": "$$5.1M",
+    "usd_loss_caption": "Partial estimate",
+    "classification": "ATTACK",
+    "verified": true,
+    "url": "incidents/85f027f3-daca-40e0-91a3-985505c7cd4c/index.html"
+  }
+]
